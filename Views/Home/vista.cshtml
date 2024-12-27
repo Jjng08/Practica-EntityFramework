@@ -1,0 +1,30 @@
+﻿<form method="post" asp-action="Vista">
+    <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre"/>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" />
+    </div>
+    <div>
+        <label for="mensaje">Mensaje</label>
+        <input type="text" id="mensaje" name="mensaje" placeholder="Mensaje"/>
+    </div>
+    <div>
+        <label for="opciones">Opciones:</label>
+        <select id="opciones" name="opciones">
+            <option value="opcion1">Reclamo </option>
+            <option value="opcion2">Felicitaciones</option>
+        </select>
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+
+
+<div>
+    <h1>Nombre: @ViewBag.nombre</h1>
+    <h1>Email: @ViewBag.email</h1>
+    <h1>Mensaje: @ViewBag.mensaje</h1>
+    <h1>Opciones: @ViewBag.opciones</h1>
+</div>

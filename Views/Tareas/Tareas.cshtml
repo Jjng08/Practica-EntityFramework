@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Tareas";
+}
+
+<h1>Tareas</h1>
+
+<form method="post" asp-action="Tarea">
+    <div>
+        <label for="n1">Numero 1:</label>
+        <input type="number" id="n1" name="n1" placeholder="n1" />
+    </div>
+    <div>
+        <label for="n2">Numero 2:</label>
+        <input type="number" id="n2" name="n2" placeholder="n2" />
+    </div>
+    <button type="submit">Enviar</button>
+</form>
+
+<table>
+    <tbody>
+        <tr>
+            <td>Suma: @ViewBag.suma</td>
+        </tr>
+        <tr>
+            <td>Factorial: @ViewBag.factorial1 </td>
+        </tr>
+        <tr>
+            <td>Par e impar: @ViewBag.ParEimpar</td>
+        </tr>
+        <tr>
+            <td>Mayor o menor: @ViewBag.Mayor</td>
+        </tr>
+    </tbody>
+</table>
+

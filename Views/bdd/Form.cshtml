@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Form";
+}
+@model ClaseNosePeroClase.Models.Contacto;
+<div class="row">
+    <div class="col-md-4">
+    <h1>Form</h1>
+    <form method="post" asp-controller="bdd" asp-action="Form">
+    <div class="mb-3">
+        <label for="rut">Rut:</label>
+        <input type="text" id="rut" name="rut" placeholder="Rut" asp-for="Rut"/>
+    </div>
+    <div class="mb-3">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre" asp-for="Nombre"/>
+    </div>
+    <div class="mb-3">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" placeholder="Edad" asp-for="Edad"/>
+    </div>
+    <div class="mb-3">
+        <label for="mail">mail:</label>
+        <input type="text" id="mail" name="mail" placeholder="mail" asp-for="Mail"/>
+    </div>
+    
+    <button type="submit">Enviar</button>   
+    </form>
+    </div>
+</div>

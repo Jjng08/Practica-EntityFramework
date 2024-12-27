@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Vista";
+}
+
+@model List<ClaseNosePeroClase.Models.Contacto>
+
+<div class="row">
+    <div class="col-md-4 offset-ms-2" >
+        <a asp-controller="bdd" asp-action="Form" class="btn btn-success mb-3">Crear Empleado</a>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <td>Rut</td>
+            <td>Nombre</td>
+            <td>Edad</td>
+            <td>Email</td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Rut</td>
+                <td>@item.Nombre</td>
+                <td>@item.Edad</td>
+                <td>@item.Mail</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+</div>
+
+<p> </p>
+
