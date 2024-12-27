@@ -9,6 +9,6 @@
 <div>
     <a asp-action="Form" asp-controller="bdd">Ir a crear user</a>
 </div>
-<div>
-    <a asp-action="ObtenerDolar" asp-controller="ApiDolar">Ir a dolar$</a>
-</div>
+<form method="get" asp-controller="ApiDolar" asp-action="ObtenerDolar">
+    <input type="submit" value="Ir a ver dolar" />
+</form>
