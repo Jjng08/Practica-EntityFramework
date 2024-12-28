@@ -10,21 +10,19 @@ namespace ClaseNosePeroClase.Controllers
         public async Task<IActionResult> ObtenerDolar()
         {
             string apiurl = $"https://mindicador.cl/api/dolar";
-            using (HttpClient client = new HttpClient()) 
+            using (HttpClient client = new HttpClient())
             {
                 JObject datosdolar = JObject.Parse(await client.GetStringAsync(apiurl));
-                
-                    var serie = datosdolar["serie"]![0];
-                    
-                        ViewBag.fecha = serie["fecha"]?.ToString();
-                        ViewBag.dolar = serie["valor"]?.ToString();
-                    
-                
+
+                var serie = datosdolar["serie"]![0];
+
+                ViewBag.fecha = serie["fecha"]?.ToString();
+                ViewBag.dolar = serie["valor"]?.ToString();
             }
             return View();
         }
 
-        public async Task<IActionResult> Sismo() 
+        public async Task<IActionResult> Sismo()
         {
             string apiurl = $"https://api.xor.cl/sismo/recent";
 
@@ -32,22 +30,25 @@ namespace ClaseNosePeroClase.Controllers
             {
                 JObject datossismo = JObject.Parse(await newclient.GetStringAsync(apiurl));
 
-                var events = datossismo["events"]!;
+                var events = datossismo["events"];
+                if (events == null)
+                {
+                    return View("Error");
+                }
 
-                List<string> fechas = new List<string>();
-                List<string> ubicaciones = new List<string>();
-                List<string> magnitudes = new List<string>();
+                List<dynamic> sismos = new List<dynamic>();
 
                 foreach (var evento in events)
                 {
-                    fechas.Add(evento["local_date"]?.ToString());
-                    ubicaciones.Add(evento["geo_reference"]?.ToString());
-                    magnitudes.Add(evento["magnitude"]!["value"]?.ToString());
+                    sismos.Add(new
+                    {
+                        Fecha = evento["local_date"]?.ToString(),
+                        Ubicacion = evento["geo_reference"]?.ToString(),
+                        Magnitud = evento["magnitude"]?["value"]?.ToString()
+                    });
                 }
 
-                ViewBag.fechas = fechas;
-                ViewBag.ubicaciones = ubicaciones;
-                ViewBag.magnitudes = magnitudes;
+                ViewBag.Sismos = sismos;
             }
             return View();
         }

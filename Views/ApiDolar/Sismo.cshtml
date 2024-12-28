@@ -1,11 +1,24 @@
 ﻿@{
     ViewBag.Title = "Sismo";
+    var sismos = ViewData["sismos"] as List<dynamic>;
 }
 
 <div>
-    <p>Fecha sismo: @ViewBag.fecha</p>
-    <p>Ubicacion: @ViewBag.ubi</p>
-    <p>Magnitud: @ViewBag.mag</p>
+    <table class="table-borderless">
+        <tr>
+            <td>Fecha</td>
+            <td>Ubicacion</td>
+            <td>Magnitud</td>
+        </tr>
+        @foreach (var item in sismos!)
+        {
+            <tr>
+                <td>@item.Fecha</td>
+                <td>@item.Ubicacion</td>
+                <td>@item.Magnitud</td>
+            </tr>
+        }
+    </table>
 </div>
         
 
